@@ -1,0 +1,15 @@
+<p>dashboard works!</p>
+<div class="my-2">
+    <label>User Name</label>
+    <!-- <input type="text" class="form-control" (input)="onUpdateUser($event)" /> -->
+     <input type="text"  />
+</div>
+<button class="btn btn-primary" [disabled]="!newUser" (click)="changeUserStatus()">Add user</button>
+<div *ngIf="isShowing;else noUser">User is created and the username is {{user}}</div>
+
+<!-- //ifElse -->
+<ng-template #noUser> 
+    <div>
+        <p>No User is Created</p>
+    </div>
+</ng-template>
