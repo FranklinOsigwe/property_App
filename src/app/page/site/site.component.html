@@ -1,0 +1,144 @@
+<div class="contsiner mt-5">
+<h2>Property Management</h2>
+
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Property Management</h2>
+
+
+    @if(isFormView()) {
+        <div class="card mb-4">
+          <div class="card-header">
+            <div class="row">
+                <div class="col-6">
+                     <h5>Create/Update Property</h5>
+                </div>
+
+                <div class="col-6 text-end">
+                    <button class="btn btn-sm btn-success" (click)="toggleView()">Go to List</button>
+                </div>
+            </div>
+            <h5>Create/Update Property</h5>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label for="siteId" class="form-label">Site ID</label>
+                  <input type="number" class="form-control" name="siteId" [(ngModel)]="formObj.siteId" id="siteId" placeholder="Enter Site ID">
+                </div>
+                <div class="col-md-6">
+                  <label for="siteTitle" class="form-label">Site Title</label>
+                  <input type="text" class="form-control" name="siteTitle" id="siteTitle" [(ngModel)]="formObj.siteTitle" placeholder="Enter Site Title">
+                </div>
+              </div>
+    
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label for="location" class="form-label">Location</label>
+                  <input type="text" class="form-control" name="location" id="location" [(ngModel)]="formObj.location"  placeholder="Enter Location">
+                </div>
+                <div class="col-md-6">
+                  <label for="propertyTypeId" class="form-label">Property Type ID</label>
+                  <select name="" id="" class="form-select">
+                    <option>Select Property Type</option>
+                    @for (item of propertyType$ | async; track $index) {
+                        <option [value]="item.propertyTypeId">{{item.propertyType}}</option>
+                    }
+                </select>
+
+                
+                </div>
+              </div>
+    
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label for="city" class="form-label">City</label>
+                  <input type="text" class="form-control" name="city" id="city" [(ngModel)]="formObj.city" placeholder="Enter City">
+                </div>
+                <div class="col-md-6">
+                  <label for="pincode" class="form-label">Pincode</label>
+                  <input type="text" class="form-control" name="pincode" id="pincode" [(ngModel)]="formObj.pincode" placeholder="Enter Pincode">
+                </div>
+              </div>
+    
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label for="state" class="form-label">State</label>
+                  <input type="text" class="form-control" id="state" name="state" [(ngModel)]="formObj.state" placeholder="Enter State">
+                </div>
+                <div class="col-md-6">
+                  <label for="totalProperties" class="form-label">Total Properties</label>
+                  <input type="number" class="form-control" id="totalProperties" name="totalProperties" [(ngModel)]="formObj.totalProperties" placeholder="Enter Total Properties">
+                </div>
+              </div>
+    
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <label for="createdDate" class="form-label">Created Date</label>
+                  <input type="datetime-local" class="form-control" id="createdDate">
+                </div>
+                <div class="col-md-6">
+                  <label for="lastUpdatedDate" class="form-label">Last Updated Date</label>
+                  <input type="datetime-local" class="form-control" id="lastUpdatedDate">
+                </div>
+              </div>
+    
+              <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+          </div>
+        </div>
+    }@else {
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+                <div class="col-6">
+                     <h5>Property List</h5>
+                </div>
+                <div class="col-6 text-end">
+                    <button class="btn btn-sm btn-success" (click)="toggleView()">Go to List</button>
+                </div>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Site Title</th>
+                  <th scope="col">Location</th>
+                  <th scope="col">City</th>
+                  <th scope="col">State</th>
+                  <th scope="col">Pincode</th>
+                  <th scope="col">Total Properties</th>
+                  <th scope="col">Created Date</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Sample Property -->
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Example Title</td>
+                  <td>Example Location</td>
+                  <td>Example City</td>
+                  <td>Example State</td>
+                  <td>123456</td>
+                  <td>10</td>
+                  <td>2024-09-14</td>
+                  <td>
+                    <button class="btn btn-warning btn-sm">Edit</button>
+                    <button class="btn btn-danger btn-sm">Delete</button>
+                  </td>
+                </tr>
+                <!-- More properties can go here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+    }
+
+    
+  </div>
+</div>
