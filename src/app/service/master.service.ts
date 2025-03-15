@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
-import { IAPIResponseModel, IPropertyType } from '../model/master';
+import { IAPIResponseModel, IPropertyType, Site } from '../model/master';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -29,6 +29,14 @@ export class MasterService {
     return this.http.delete<IAPIResponseModel>(environment.API_URL + 'DeletePropertyTypeById?id='+id)
   }
 
+  saveSite(obj: Site):Observable <IAPIResponseModel> {
+    return this.http.post<IAPIResponseModel>(environment.API_URL + 'AddSites', obj)
+  }
 
+  getAllSites():Observable <IAPIResponseModel> {
+    return this.http.get<IAPIResponseModel>(environment.API_URL + 'GetAllSites')
+  }
+  
+  
   
 }
